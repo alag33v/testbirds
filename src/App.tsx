@@ -61,41 +61,47 @@ export const App = () => {
       <GlobalStyle />
       <StyledApp>
         <h1 className='title'>Test tasks for Testbirds👋</h1>
-        <div className='team__wrapper'>
-          <h3 className='team__wrapper-title'>Your team for this test</h3>
-          <div className='team__wrapper-image'>
-            Team page
-            <img src={people} alt='' />
+        <div className='main__wrapper'>
+          <div className='team__wrapper'>
+            <h3 className='team__wrapper-title'>Your team for this test</h3>
+            <div className='team__wrapper-image'>
+              Team page
+              <img src={people} alt='' />
+            </div>
           </div>
+          <ul className='list__wrapper' ref={domNode}>
+            <li>
+              <AddUser
+                userName={userName}
+                changeUserName={changeUserName}
+                onFocusInput={onFocusInput}
+                newUserActive={newUserActive}
+                enterNewUser={enterNewUser}
+                clearInput={clearInput}
+              />
+              <DropdownMenu
+                showDropdown={showDropdown}
+                allUsers={allUsers}
+                userName={userName}
+                onAddUser={onAddUser}
+              />
+            </li>
+            {users
+              .map((user: IUser) => (
+                <TeamUser
+                  key={user.id}
+                  user={user}
+                  onRemoveUser={onRemoveUser}
+                />
+              ))
+              .splice(0, needShowAll ? users.length : 5)}
+          </ul>
+          <ToggleButton
+            users={users}
+            needShowAll={needShowAll}
+            toggleDisplayUsers={toggleDisplayUsers}
+          />
         </div>
-        <ul className='list__wrapper' ref={domNode}>
-          <li>
-            <AddUser
-              userName={userName}
-              changeUserName={changeUserName}
-              onFocusInput={onFocusInput}
-              newUserActive={newUserActive}
-              enterNewUser={enterNewUser}
-              clearInput={clearInput}
-            />
-            <DropdownMenu
-              showDropdown={showDropdown}
-              allUsers={allUsers}
-              userName={userName}
-              onAddUser={onAddUser}
-            />
-          </li>
-          {users
-            .map((user: IUser) => (
-              <TeamUser key={user.id} user={user} onRemoveUser={onRemoveUser} />
-            ))
-            .splice(0, needShowAll ? users.length : 5)}
-        </ul>
-        <ToggleButton
-          users={users}
-          needShowAll={needShowAll}
-          toggleDisplayUsers={toggleDisplayUsers}
-        />
       </StyledApp>
     </>
   );

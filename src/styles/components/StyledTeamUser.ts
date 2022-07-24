@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const StyledTeamUser = styled.li`
+  transition: 0.3s ease-in-out;
   position: relative;
 
   :hover {
-    background: bisque;
+    background: rgba(144, 238, 144, 0.5);
   }
 
   :hover .img {
@@ -16,9 +17,10 @@ export const StyledTeamUser = styled.li`
     height: 50px;
     background: #fff;
     border-radius: 50%;
+    border: 1px solid #ffd279;
     position: absolute;
     left: 10px;
-    opacity: 1;
+    opacity: 0;
     transition: 0.3s ease-in-out;
   }
 

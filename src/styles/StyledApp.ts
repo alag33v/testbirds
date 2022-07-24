@@ -5,6 +5,12 @@ export const StyledApp = styled.div`
   margin: 0 auto;
   padding-top: 25px;
 
+  .main__wrapper {
+    border: 1px solid lightgray;
+    border-top: 3px solid green;
+    padding: 5px 15px;
+  }
+
   .list__wrapper {
     display: flex;
     flex-wrap: wrap;
